@@ -1,0 +1,3633 @@
+:root {
+  --red: #e24c2c;
+  --yellow: #e8b732;
+  --green: #238e63;
+  --blue: #416bd5;
+
+  --text: #172033;
+  --muted: #5e6673;
+  --light: #f3f4f4;
+  --white: #ffffff;
+
+  --container: 1380px;
+  --header-height: 92px;
+  --radius: 4px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--white);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: min(calc(100% - 64px), var(--container));
+  margin-inline: auto;
+}
+
+.site-header {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  color: #000000;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.nav-container {
+  width: min(calc(100% - 64px), var(--container));
+  height: 100%;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.brand img {
+  display: block;
+  width: 148px;
+  height: auto;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(22px, 2.4vw, 46px);
+}
+
+.main-nav a {
+  color: #000000;
+  position: relative;
+  padding: 8px 0;
+  font-size: 16px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-toggle {
+  appearance: none;
+  border: 0;
+  padding: 8px 18px 8px 0;
+  background: transparent;
+  color: #000000;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  white-space: nowrap;
+}
+
+.nav-dropdown-toggle::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-65%) rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width 0.2s ease;
+}
+
+.main-nav a:hover::after,
+.main-nav a:focus-visible::after {
+  width: 100%;
+}
+
+.menu-toggle {
+  display: none;
+  border: 0;
+  background: transparent;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 28px;
+  height: 2px;
+  margin: 5px 0;
+  background: currentColor;
+}
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  isolation: isolate;
+}
+
+.hero-image {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background-image: url("images/uvodni-fotografie-dodavka.png");
+  background-size: cover;
+  background-position: center center;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(255, 255, 255, 0.92) 31%,
+    rgba(255, 255, 255, 0.34) 57%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding-top: calc(var(--header-height) + 50px);
+  padding-bottom: 100px;
+}
+
+.hero-copy {
+  width: min(620px, 52%);
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(44px, 5vw, 76px);
+  line-height: 1.03;
+  letter-spacing: -0.045em;
+  font-weight: 800;
+}
+
+.hero-text {
+  max-width: 590px;
+  margin: 28px 0 34px;
+  font-size: clamp(18px, 1.55vw, 22px);
+  line-height: 1.55;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  padding: 0 28px;
+  border-radius: var(--radius);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  filter: brightness(0.96);
+}
+
+.button-primary {
+  color: var(--white);
+  background: var(--blue);
+}
+
+.content-section {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding: 110px 0;
+  background: var(--white);
+  scroll-margin-top: var(--header-height);
+}
+
+.content-section.light {
+  background: var(--light);
+}
+
+.section-inner {
+  width: min(calc(100% - 64px), var(--container));
+  display: grid;
+  align-items: center;
+  gap: clamp(50px, 7vw, 120px);
+}
+
+.section-copy {
+  max-width: 760px;
+}
+
+.section-copy h2 {
+  margin: 0 0 28px;
+  font-size: clamp(38px, 4.5vw, 68px);
+  line-height: 1.06;
+  letter-spacing: -0.04em;
+}
+
+.section-text {
+  max-width: 760px;
+}
+
+.section-text p,
+.section-copy > p {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.about-section .section-inner {
+  grid-template-columns: minmax(0, 1.05fr) minmax(390px, 0.95fr);
+  gap: clamp(32px, 4vw, 72px);
+}
+
+.feature-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.feature-item {
+  min-height: 190px;
+  padding: 42px 44px;
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.feature-item h3{
+  margin: 0 0 10px;
+  font-size: 21px;
+  line-height: 1.2;
+}
+
+.feature-item p{
+  margin: 0;
+  color: inherit;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.activities-section .section-inner {
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(36px, 5vw, 86px);
+}
+
+.activities-section .section-inner {
+  min-height: 0;
+}
+
+.news-section .section-inner {
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+}
+
+.news-illustration {
+  display: block;
+  width: min(100%, 560px);
+  height: auto;
+  max-height: 285px;
+  object-fit: contain;
+  object-position: left bottom;
+  margin-top: 18px;
+}
+
+.news-placeholder {
+  min-height: 390px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  border: 1px dashed #c5c9cc;
+  background: rgba(255, 255, 255, 0.6);
+  text-align: center;
+}
+
+.news-placeholder span {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+.news-placeholder p {
+  margin: 12px 0 0;
+  color: var(--muted);
+}
+
+.site-footer {
+  background: #eeeeee;
+  color: #272b30;
+}
+
+.footer-main {
+  min-height: 350px;
+  padding-top: 72px;
+  padding-bottom: 64px;
+  display: grid;
+  grid-template-columns: minmax(260px, 0.75fr) 1.7fr;
+  gap: 70px;
+}
+
+.footer-identity {
+  padding-right: 60px;
+  border-right: 1px solid #cfd2d5;
+}
+
+.footer-logo {
+  display: block;
+  width: 132px;
+  height: auto;
+  margin-bottom: 26px;
+  filter: grayscale(1) contrast(1.15);
+}
+
+.footer-details p {
+  margin: 4px 0;
+  font-size: 15px;
+}
+
+.footer-details p:first-child {
+  font-weight: 800;
+}
+
+.footer-bottom {
+  border-top: 1px solid #d4d6d8;
+}
+
+.footer-bottom .container {
+  position: relative;
+  min-height: 62px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+  color: #73777c;
+  font-size: 13px;
+}
+
+.footer-bottom .container > span:last-child {
+  justify-self: end;
+}
+
+.facebook-button {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  flex: 0 0 auto;
+  border-radius: 6px;
+  transition: transform 0.2s ease;
+}
+
+.facebook-button img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+.facebook-button:hover img,
+.facebook-button:focus-visible img {
+  filter: invert(42%) sepia(78%) saturate(1000%) hue-rotate(194deg) brightness(90%) contrast(95%);
+  transform: scale(1.05);
+}
+
+.facebook-button:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.footer-bottom a {
+  margin-left: 22px;
+}
+
+.feature-item, .feature-item:hover{
+  transform: translateY(-4px);
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.11));
+}
+
+.nav-dropdown-toggle::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 18px;
+  bottom: 0;
+  width: auto;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.2s ease;
+}
+.nav-dropdown-toggle:hover::after, .nav-dropdown-toggle:focus-visible::after{
+  transform: scaleX(1);
+}
+
+.content-section.journey-section {
+  position: relative;
+  height: 100svh;
+  min-height: 100svh;
+  padding: 96px 0 42px;
+  overflow: hidden;
+}
+
+.journey-section .section-inner {
+  position: relative;
+  z-index: 2;
+  width: min(calc(100% - 64px), var(--container));
+  height: 100%;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: minmax(250px, 30%) minmax(0, 1fr);
+  align-items: stretch;
+  gap: clamp(38px, 6vw, 100px);
+}
+
+.journey-path {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 31%;
+  height: 100%;
+  z-index: 1;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.journey-path-line {
+  fill: none;
+  stroke: var(--path-color);
+  stroke-width: 11;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 22 22;
+  vector-effect: non-scaling-stroke;
+  transition:
+    stroke-width 0.45s ease,
+    filter 0.45s ease,
+    stroke-dasharray 0.45s ease;
+}
+
+@keyframes journey-dash {
+  to { stroke-dashoffset: -46; }
+}
+
+.journey-section {
+  --path-color: var(--red);
+}
+.about-section { --path-color: var(--red); }
+.activities-section { --path-color: var(--blue); }
+
+.news-section { --path-color: var(--green); }
+
+.journey-visual {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.journey-visual img {
+  display: block;
+  width: min(100%, 520px);
+  height: auto;
+  max-height: 62vh;
+  object-fit: contain;
+  object-position: center;
+  filter: drop-shadow(0 7px 12px rgba(0,0,0,0.07));
+}
+
+.journey-visual-small img {
+  width: min(100%, 390px);
+  max-height: 47vh;
+}
+
+.journey-section .section-copy {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  max-width: 820px;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: clamp(10px, 2vh, 24px);
+  min-width: 0;
+}
+
+.journey-section .section-copy h2 {
+  color: #000000;
+  margin: 0 0 clamp(16px, 2vh, 24px);
+  font-size: clamp(34px, 4.15vw, 64px);
+  line-height: 1.04;
+}
+
+.journey-section .section-text {
+  max-width: 820px;
+}
+
+.journey-section .section-text p,
+.journey-section .section-copy > p {
+  color: var(--muted);
+  font-size: clamp(15px, 1.18vw, 18px);
+  line-height: 1.48;
+  margin: 0 0 13px;
+}
+
+.activities-section .journey-visual-small img {
+  width: min(100%, 360px);
+  max-height: 43vh;
+}
+
+.activities-section .section-copy {
+  padding-right: clamp(0px, 2vw, 28px);
+}
+
+.news-section .journey-visual img {
+  width: min(100%, 520px);
+  max-height: 58vh;
+}
+
+.news-section .news-placeholder {
+  margin-top: auto;
+  min-height: 0;
+  height: clamp(180px, 27vh, 250px);
+  padding: 30px;
+  border: 1px dashed #c5c9cc;
+  background: rgba(255,255,255,0.62);
+}
+
+.news-section .news-placeholder span {
+  font-size: 12px;
+}
+
+.journey-section .journey-visual img {
+  position: relative;
+  z-index: 5;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+.content-section.journey-section {
+  height: 100vh;
+  height: 100svh;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 92px 0 34px;
+}
+
+.journey-section .section-inner {
+  height: 100%;
+  grid-template-columns: minmax(250px, 27%) minmax(0, 1fr);
+  gap: clamp(42px, 6vw, 96px);
+}
+
+.journey-path {
+  width: 27%;
+}
+
+.journey-visual {
+  z-index: 5;
+}
+
+.journey-visual img {
+  z-index: 6;
+}
+
+.journey-section .section-copy {
+  padding-top: 0;
+  justify-content: flex-start;
+}
+
+.journey-section .section-copy h2 {
+  color: #000;
+  margin-bottom: 14px;
+  font-size: clamp(34px, 4.05vw, 62px);
+}
+
+.journey-section .section-text p,
+.journey-section .section-copy > p {
+  margin-bottom: 10px;
+  line-height: 1.45;
+}
+
+.activities-section .journey-visual-small img {
+  width: min(100%, 390px);
+  max-height: 48vh;
+}
+
+.news-section .news-placeholder {
+  margin-top: 6px;
+  height: 34vh;
+  min-height: 250px;
+  max-height: 330px;
+  padding: 30px;
+}
+
+.journey-path-line {
+  stroke-width: 11;
+}
+
+.news-section .section-copy {
+  align-self: stretch;
+}
+
+.news-section .news-placeholder {
+  width: calc(100% + 24px);
+  max-width: none;
+  flex: 1 1 auto;
+  min-height: 0;
+  height: auto;
+  max-height: none;
+  margin-top: 8px;
+  margin-bottom: 0;
+  padding: 30px;
+}
+
+.about-section .journey-visual img {
+  width: min(105%, 546px);
+  transform: translateX(-14px);
+}
+
+.activities-section .journey-visual-small img {
+  width: min(95%, 342px);
+  transform: translateX(-14px);
+}
+
+.news-section .journey-visual img {
+  transform: translateX(-14px);
+}
+
+.news-section .news-placeholder {
+  flex: 0 1 auto;
+  height: clamp(170px, 23vh, 225px);
+  min-height: 0;
+  max-height: 225px;
+  margin-bottom: 0;
+}
+
+.site-footer {
+  height: 100svh;
+  min-height: 100svh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-footer .footer-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  height: calc(100svh - 62px);
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0;
+}
+
+.site-footer .footer-identity {
+  grid-row: 2;
+  border-right: 0;
+  border-top: 1px solid #cfd2d5;
+  padding: 24px 0 18px;
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr);
+  align-items: center;
+  gap: 42px;
+}
+
+.site-footer .footer-logo {
+  width: 132px;
+  margin: 0;
+  justify-self: center;
+}
+
+.site-footer .footer-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 48px;
+  row-gap: 5px;
+  align-content: center;
+}
+
+.site-footer .footer-details p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.site-footer .footer-details p:first-child {
+  grid-column: 1 / -1;
+  margin-bottom: 4px;
+}
+
+.site-footer .footer-bottom {
+  flex: 0 0 62px;
+  height: 62px;
+}
+
+.about-section .journey-visual img {
+  width: min(115%, 598px);
+  transform: translateX(-14px);
+}
+
+.news-section .journey-visual img {
+  width: min(105%, 546px);
+  max-height: 61vh;
+  transform: translateX(-14px);
+}
+
+.news-section .news-placeholder {
+  height: clamp(300px, 46vh, 440px);
+  min-height: 0;
+  max-height: 440px;
+  flex: 0 1 auto;
+}
+
+.site-footer .footer-main {
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.site-footer .footer-identity {
+  grid-column: 1;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
+  gap: 40px;
+  align-items: center;
+  border-top: 1px solid #cfd2d5;
+  padding: 20px 0 16px;
+}
+
+.site-footer .footer-logo {
+  justify-self: start;
+  margin-left: 0;
+}
+
+.site-footer .footer-details {
+  display: block;
+}
+
+.site-footer .footer-details p {
+  margin: 4px 0;
+}
+
+.site-footer {
+  position: relative;
+}
+
+.site-footer .footer-main {
+  position: relative;
+}
+
+.site-footer .footer-identity {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr) minmax(300px, 0.82fr);
+  column-gap: 34px;
+  align-items: center;
+}
+
+.site-footer .footer-details {
+  min-width: 0;
+}
+
+.site-footer .contact-form-wrap {
+  min-width: 0;
+  align-self: center;
+  justify-self: stretch;
+  padding-left: 26px;
+  border-left: 1px solid #cfd2d5;
+}
+
+.site-footer .contact-form-wrap h3 {
+  margin: 0 0 10px;
+  color: #000;
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.site-footer .contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+}
+
+.site-footer .contact-form input,
+.site-footer .contact-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #cfd2d5;
+  border-radius: 5px;
+  background: #fff;
+  color: #222;
+  font: inherit;
+  font-size: 13px;
+  padding: 9px 11px;
+  outline: none;
+}
+
+.site-footer .contact-form textarea {
+  min-height: 82px;
+  resize: vertical;
+}
+
+.site-footer .contact-form input:focus,
+.site-footer .contact-form textarea:focus {
+  border-color: #e24c2c;
+}
+
+.site-footer .contact-form button {
+  align-self: flex-start;
+  border: 0;
+  border-radius: 4px;
+  padding: 10px 16px;
+  background: #e24c2c;
+  color: #fff;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: .06em;
+  cursor: pointer;
+  transition: transform .18s ease, opacity .18s ease;
+}
+
+.site-footer .contact-form button:hover {
+  transform: translateY(-1px);
+  opacity: .9;
+}
+
+.hero .contact-form,
+.journey-section .contact-form,
+.hero .contact-form-wrap,
+.journey-section .contact-form-wrap {
+  display: none !important;
+}
+
+.site-footer .footer-main {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  grid-template-rows: 1fr 1fr !important;
+  height: calc(100svh - 62px) !important;
+  min-height: 0 !important;
+}
+
+.site-footer .footer-identity {
+  grid-row: 2 !important;
+  display: grid !important;
+  grid-template-columns: 150px minmax(0, 1fr) minmax(340px, 0.85fr) !important;
+  align-items: center !important;
+  column-gap: 36px !important;
+  padding: 22px 0 18px !important;
+  border-top: 1px solid #cfd2d5 !important;
+}
+
+.site-footer .footer-details {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-self: center !important;
+}
+
+.site-footer .contact-form-wrap {
+  display: block !important;
+  width: 100% !important;
+  max-width: 440px !important;
+  justify-self: end !important;
+  align-self: center !important;
+  box-sizing: border-box !important;
+  padding-left: 28px !important;
+  border-left: 1px solid #cfd2d5 !important;
+}
+
+.site-footer .contact-form-wrap h3 {
+  margin: 0 0 9px !important;
+  color: #000 !important;
+  font-size: 18px !important;
+  line-height: 1.2 !important;
+}
+
+.site-footer .contact-form {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 112px !important;
+  grid-template-rows: auto auto auto !important;
+  column-gap: 12px !important;
+  row-gap: 7px !important;
+  align-items: center !important;
+  margin: 0 !important;
+}
+
+.site-footer .contact-form input,
+.site-footer .contact-form textarea {
+  grid-column: 1 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  border: 1px solid #cfd2d5 !important;
+  border-radius: 5px !important;
+  background: #fff !important;
+  color: #222 !important;
+  font: inherit !important;
+  font-size: 13px !important;
+  padding: 9px 11px !important;
+}
+
+.site-footer .contact-form input:nth-of-type(1) { grid-row: 1 !important; }
+.site-footer .contact-form input:nth-of-type(2) { grid-row: 2 !important; }
+.site-footer .contact-form textarea {
+  grid-row: 3 !important;
+  min-height: 82px !important;
+  resize: vertical !important;
+}
+
+.site-footer .contact-form button {
+  grid-column: 2 !important;
+  grid-row: 1 / 4 !important;
+  align-self: center !important;
+  justify-self: center !important;
+  margin: 0 !important;
+  min-width: 112px !important;
+  padding: 10px 14px !important;
+  border: 0 !important;
+  border-radius: 4px !important;
+  background: #8a8f94 !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  font-size: 11px !important;
+  letter-spacing: .06em !important;
+  cursor: pointer !important;
+}
+
+.hero .contact-form-wrap,
+.hero .contact-form,
+.journey-section .contact-form-wrap,
+.journey-section .contact-form,
+section:not(.site-footer) .contact-form-wrap,
+section:not(.site-footer) .contact-form {
+  display: none !important;
+}
+
+.site-footer .contact-form-wrap {
+  display: block !important;
+  grid-column: 3 !important;
+  grid-row: 1 !important;
+  align-self: center !important;
+  justify-self: stretch !important;
+  width: 100% !important;
+  max-width: 440px !important;
+  margin: 0 !important;
+  padding-left: 28px !important;
+  border-left: 1px solid #cfd2d5 !important;
+  box-sizing: border-box !important;
+}
+
+.site-footer .contact-form {
+  display: grid !important;
+  grid-template-columns: minmax(0,1fr) 112px !important;
+  grid-template-rows: auto auto auto !important;
+  gap: 7px 12px !important;
+  align-items: center !important;
+}
+
+.site-footer .contact-form input,
+.site-footer .contact-form textarea {
+  grid-column: 1 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.site-footer .contact-form input:nth-of-type(1) { grid-row: 1 !important; }
+.site-footer .contact-form input:nth-of-type(2) { grid-row: 2 !important; }
+.site-footer .contact-form textarea { grid-row: 3 !important; }
+
+.site-footer .contact-form button {
+  grid-column: 2 !important;
+  grid-row: 1 / 4 !important;
+  align-self: center !important;
+  justify-self: center !important;
+  margin: 0 !important;
+  min-width: 112px !important;
+  background: #8a8f94 !important;
+  color: #fff !important;
+}
+
+.site-footer .footer-identity {
+  grid-template-columns: 150px minmax(0, 1fr) minmax(340px, 440px) !important;
+  align-items: center !important;
+}
+
+.site-footer .contact-form-wrap {
+  grid-column: 3 !important;
+  justify-self: end !important;
+  align-self: center !important;
+  width: min(440px, 100%) !important;
+  max-width: 440px !important;
+  margin-left: auto !important;
+  margin-right: 0 !important;
+}
+
+.site-footer .contact-form-wrap h3 {
+  margin: 0 0 9px !important;
+}
+
+.site-footer .footer-identity {
+  display: grid !important;
+  grid-template-columns: minmax(120px, 0.7fr) minmax(260px, 1.1fr) minmax(330px, 1fr) !important;
+  align-items: center !important;
+  justify-content: stretch !important;
+  column-gap: 42px !important;
+  padding: 24px 0 18px !important;
+  text-align: left !important;
+}
+
+.site-footer .footer-logo {
+  grid-column: 1 !important;
+  justify-self: center !important;
+  align-self: center !important;
+  margin: 0 !important;
+}
+
+.site-footer .footer-details {
+  grid-column: 2 !important;
+  align-self: center !important;
+  justify-self: stretch !important;
+  text-align: left !important;
+  margin: 0 !important;
+}
+
+.site-footer .contact-form-wrap {
+  grid-column: 3 !important;
+  align-self: center !important;
+  justify-self: stretch !important;
+  width: 100% !important;
+  max-width: 440px !important;
+  margin: 0 !important;
+  padding-left: 28px !important;
+  border-left: 1px solid #cfd2d5 !important;
+  box-sizing: border-box !important;
+}
+
+.site-footer .contact-form-wrap h3 {
+  margin: 0 0 9px !important;
+  text-align: left !important;
+}
+
+.site-footer .contact-form {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 7px !important;
+  margin: 0 !important;
+}
+
+.site-footer .contact-form input,
+.site-footer .contact-form textarea {
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.site-footer .contact-form button {
+  align-self: flex-start !important;
+  margin: 3px 0 0 !important;
+  min-width: 112px !important;
+  background: #8a8f94 !important;
+  color: #fff !important;
+}
+
+.site-footer .footer-identity {
+  display: grid !important;
+  grid-template-columns: 150px minmax(280px, 1fr) minmax(360px, 440px) !important;
+  align-items: center !important;
+  justify-items: stretch !important;
+  column-gap: 42px !important;
+  height: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.site-footer .footer-logo {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  align-self: center !important;
+  justify-self: center !important;
+  margin: 0 !important;
+}
+
+.site-footer .footer-details {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  align-self: center !important;
+  justify-self: stretch !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.site-footer .contact-form-wrap {
+  grid-column: 3 !important;
+  grid-row: 1 !important;
+  align-self: center !important;
+  justify-self: stretch !important;
+  margin: 0 !important;
+  padding-left: 28px !important;
+  box-sizing: border-box !important;
+  border-left: 1px solid #cfd2d5 !important;
+}
+
+.site-footer .contact-form-wrap h3 {
+  margin: 0 0 9px !important;
+}
+
+.site-footer .contact-form {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 7px !important;
+  margin: 0 !important;
+}
+
+.site-footer .contact-form button {
+  align-self: flex-start !important;
+  margin: 3px 0 0 !important;
+}
+
+.site-footer .footer-logo,
+.site-footer .footer-details,
+.site-footer .contact-form-wrap {
+  position: relative !important;
+  top: 0 !important;
+  transform: none !important;
+}
+
+.site-footer .contact-form-wrap,
+.site-footer .contact-form,
+.site-footer .contact-form input,
+.site-footer .contact-form textarea,
+.site-footer .contact-form button {
+  position: relative !important;
+  z-index: 20 !important;
+  pointer-events: auto !important;
+}
+
+.site-footer .contact-form input,
+.site-footer .contact-form textarea {
+  cursor: text !important;
+}
+
+.site-footer .contact-form button {
+  cursor: pointer !important;
+}
+
+/* Prevent accidental sideways overflow at every size. */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img, svg, canvas, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Make text shrink/wrap gracefully instead of colliding. */
+h1, h2, h3, h4, p, a, button, label {
+  overflow-wrap: anywhere;
+  word-break: normal;
+  hyphens: auto;
+}
+
+/* ---------------------------------------------------------
+   Phones: portrait only
+   --------------------------------------------------------- */
+
+/* ---------------------------------------------------------
+   Tablet portrait: center hero and stabilize stacked content
+   --------------------------------------------------------- */
+
+/* ---------------------------------------------------------
+   FHD / wide desktop: recenter composition instead of pushing
+   everything toward the right edge.
+   --------------------------------------------------------- */
+
+/* ---------------------------------------------------------
+   Browser zoom / narrow viewport resilience
+   --------------------------------------------------------- */
+
+/* Mobile: never let inherited desktop positioning squeeze text
+   into a one-character column. */
+
+/* 4K: use the same visual scale as the original desktop rather
+   than inventing a larger 4K-specific composition. */
+
+/* Keep decorative road/art behind the copy on phones. */
+
+/* 4K: scale the actual illustrations up and keep them on the road,
+   while retaining the original desktop proportions. */
+
+/* Phones: copy is the foreground layer; road + illustration are
+   centered decorative background layers at 30% opacity. */
+
+/* 4K: use desktop proportions but make the road illustrations
+   substantially larger and place them directly over the road area. */
+
+/* v9 responsive additions: mobile/tablet portrait + 4K only */
+
+/* v10: selected v7 mobile + tablet portrait */
+@media (max-width: 767px) {
+
+  /* Visually discourage landscape and keep the page in portrait. */
+  @media (orientation: landscape) {
+    body::before {
+      content: "Otočte prosím zařízení na výšku.";
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: #fff;
+      color: #111;
+      font-size: 20px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    body > * {
+      visibility: hidden !important;
+    }
+
+    body::before {
+      visibility: visible !important;
+    }
+  }
+
+  .hero,
+  .journey-section,
+  .site-footer {
+    min-height: 100svh !important;
+    height: auto !important;
+  }
+
+  
+
+  /* All copy and CTA controls centered. */
+  .hero-content, .hero-copy, .section-copy{
+    width: 100% !important;
+    max-width: 560px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+  }
+
+  
+
+  .hero a, .hero button, .journey-section a, .journey-section button{
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Illustrations move below the copy and become softly transparent.
+     The path also becomes subordinate so it never dominates mobile. */
+  
+
+  .journey-path{
+    opacity: .21 !important;
+    z-index: 1 !important;
+  }
+
+  /* O nás pillars: vertical, stable size, no overlap. */
+  
+
+  
+
+  /* Aktuality: first/article area uses all available width. */
+  
+
+  /* Contact: clean centered vertical composition. */
+  .site-footer .footer-identity{
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+  }
+
+  .site-footer .footer-logo,
+  .site-footer .footer-details,
+  .site-footer .contact-form-wrap {
+    width: min(100%, 560px) !important;
+    max-width: 560px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+  }
+
+  .site-footer .contact-form-wrap {
+    border-left: 0 !important;
+    border-top: 1px solid #d6d8da !important;
+    padding: 18px 0 0 !important;
+  }
+
+  .site-footer input,
+  .site-footer textarea,
+  .site-footer select {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .site-footer .contact-form button {
+    display: block !important;
+    margin: 14px auto 0 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-content, .hero-copy, .section-copy{
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    width: 100% !important;
+    max-width: 560px !important;
+    min-width: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+  }
+
+  .hero-content *, .hero-copy *, .section-copy *{
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .hero h1, .hero h2, .hero p,
+  .journey-section h1, .journey-section h2, .journey-section h3,
+  .journey-section p,
+  .section-copy h1, .section-copy h2, .section-copy h3,
+  .section-copy p {
+    width: auto !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+    hyphens: auto !important;
+  }
+
+  /* Decorative path + illustration form one centered, translucent layer. */
+  
+
+  .journey-path{
+    opacity: .21 !important;
+    z-index: 0 !important;
+  }
+
+  /* Copy always sits above the decorative layer. */
+  .section-copy{
+    z-index: 10 !important;
+  }
+
+  /* Four bubbles / cards: one per row, stable dimensions. */
+  
+
+  
+
+  /* Prevent the news area from colliding with preceding cards. */
+  
+
+  /* Contact: logo, identity and form centered and vertically stacked. */
+  .site-footer .footer-identity{
+    display: flex !important;
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+    gap: 18px !important;
+  }
+
+  .site-footer .footer-logo,
+  .site-footer .footer-details,
+  .site-footer .contact-form-wrap {
+    position: relative !important;
+    inset: auto !important;
+    float: none !important;
+    width: min(100%, 560px) !important;
+    max-width: 560px !important;
+    min-width: 0 !important;
+    height: auto !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+  }
+
+  .site-footer .footer-logo {
+    max-width: 180px !important;
+  }
+
+  .site-footer .contact-form-wrap {
+    border-left: 0 !important;
+    border-top: 1px solid #d6d8da !important;
+    padding: 18px 0 0 !important;
+  }
+
+  .site-footer .contact-form {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+  }
+
+  .site-footer input,
+  .site-footer textarea,
+  .site-footer select {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .site-footer .contact-form button {
+    display: block !important;
+    margin: 12px auto 0 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .journey-section,
+  .hero,
+  .site-footer {
+    position: relative !important;
+    overflow: hidden !important;
+  }
+
+  /* Copy occupies the full central content width. */
+  .journey-section .section-copy{
+    position: relative !important;
+    z-index: 20 !important;
+    width: min(100%, 620px) !important;
+    max-width: 620px !important;
+    min-width: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+    text-align: center !important;
+  }
+
+  .journey-section h1,
+  .journey-section h2,
+  .journey-section h3,
+  .journey-section p,
+  .journey-section li,
+  .journey-section span {
+    position: relative !important;
+    z-index: 21 !important;
+    width: auto !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+    hyphens: none !important;
+    text-align: center !important;
+  }
+
+  /* Art and road form a separate background layer. */
+  
+
+  .journey-section .journey-path{
+    position: absolute !important;
+    z-index: 1 !important;
+    opacity: .21 !important;
+    pointer-events: none !important;
+  }
+
+  /* Prevent a decorative image from taking layout space away from copy. */
+  
+
+  /* All four helping bubbles/cards: exactly one per row. */
+  
+
+  
+
+  /* The next section starts after the cards, never underneath them. */
+  .journey-section + .journey-section {
+    clear: both !important;
+    position: relative !important;
+    z-index: 30 !important;
+  }
+
+  /* News/articles use the remaining section width and do not overlap. */
+  
+
+  /* Contact: compact desktop-sized logo, then identity, then form. */
+  .site-footer .footer-logo img{
+    width: auto !important;
+    height: auto !important;
+    max-width: 150px !important;
+    max-height: 90px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .site-footer .footer-logo {
+    width: auto !important;
+    max-width: 180px !important;
+    margin: 0 auto !important;
+  }
+
+  .site-footer .footer-identity{
+    position: relative !important;
+    z-index: 20 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    gap: 14px !important;
+    margin: 0 auto !important;
+    padding-bottom: 24px !important;
+  }
+
+  .site-footer .footer-details,
+  .site-footer .contact-form-wrap {
+    position: relative !important;
+    inset: auto !important;
+    float: none !important;
+    width: min(100%, 560px) !important;
+    max-width: 560px !important;
+    min-width: 0 !important;
+    height: auto !important;
+    margin: 0 auto !important;
+  }
+
+  .site-footer .contact-form-wrap {
+    border-left: 0 !important;
+    border-top: 1px solid #d6d8da !important;
+    padding: 16px 0 0 !important;
+    z-index: 21 !important;
+  }
+
+  .site-footer .contact-form {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 9px !important;
+    width: 100% !important;
+  }
+
+  .site-footer .contact-form input,
+  .site-footer .contact-form textarea {
+    position: relative !important;
+    z-index: 22 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .site-footer .contact-form button {
+    position: relative !important;
+    z-index: 22 !important;
+    display: block !important;
+    margin: 10px auto 0 !important;
+  }
+}
+
+@media (max-width: 767px) {
+
+  .content-section.journey-section {
+    height: auto !important;
+    min-height: 100svh !important;
+    padding: 88px 0 34px !important;
+    overflow: hidden !important;
+  }
+
+  .journey-section .section-inner {
+    position: relative !important;
+    display: block !important;
+    width: min(calc(100% - 32px), 620px) !important;
+    height: auto !important;
+    min-height: calc(100svh - 122px) !important;
+    margin: 0 auto !important;
+  }
+
+  /* One centered column for ALL textual content. */
+  .journey-section .section-copy {
+    position: relative !important;
+    z-index: 30 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 620px !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    text-align: center !important;
+  }
+
+  .journey-section .section-copy h2, .journey-section .section-copy p, .journey-section .section-text, .journey-section .section-copy > p{
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+  }
+
+  .journey-section .section-copy h2 {
+    font-size: clamp(29px, 8vw, 44px) !important;
+    line-height: 1.06 !important;
+    margin-bottom: 14px !important;
+  }
+
+  .journey-section .section-text p,
+  .journey-section .section-copy > p {
+    font-size: 15px !important;
+    line-height: 1.48 !important;
+    margin-bottom: 10px !important;
+  }
+
+  /* Decorative column is removed from normal flow, so it can NEVER
+     squeeze the copy into a narrow strip. */
+  .journey-section .journey-visual {
+    position: absolute !important;
+    z-index: 2 !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    pointer-events: none !important;
+  }
+
+  .journey-section .journey-visual img,
+  .journey-section .journey-visual-small img,
+  .journey-section .news-illustration {
+    position: relative !important;
+    z-index: 2 !important;
+    display: block !important;
+    width: min(76vw, 350px) !important;
+    max-width: 350px !important;
+    max-height: 34svh !important;
+    height: auto !important;
+    margin: 0 auto !important;
+    transform: none !important;
+    object-fit: contain !important;
+    opacity: .21 !important;
+    filter: none !important;
+  }
+
+  /* Road stays behind both art and copy. */
+  .journey-section .journey-path {
+    position: absolute !important;
+    z-index: 1 !important;
+    inset: 0 auto 0 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    opacity: .21 !important;
+    pointer-events: none !important;
+  }
+
+  .journey-section .journey-path-line {
+    opacity: 1 !important;
+  }
+
+  /* Pillars: one complete item per row, with normal flow height. */
+  
+
+  
+
+  
+
+  
+
+  /* Audience bubbles: absolutely no 2x2 layout on phones. */
+  
+
+  
+
+  /* Explicitly cancel the desktop indentation on colored bubbles. */
+  
+
+  /* News follows the previous section in normal document flow. */
+  .news-section {
+    clear: both !important;
+  }
+
+  .news-section .section-inner {
+    min-height: calc(100svh - 122px) !important;
+  }
+
+  .news-section .news-placeholder {
+    position: relative !important;
+    z-index: 40 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 300px !important;
+    max-height: none !important;
+    margin: 20px 0 0 !important;
+    padding: 22px !important;
+  }
+
+  /* Contact is one clean vertical stack. */
+  .site-footer {
+    height: auto !important;
+    min-height: 100svh !important;
+    overflow: hidden !important;
+  }
+
+  .site-footer .footer-main {
+    display: flex !important;
+    flex-direction: column !important;
+    width: min(calc(100% - 32px), 620px) !important;
+    height: auto !important;
+    min-height: calc(100svh - 62px) !important;
+    margin: 0 auto !important;
+  }
+
+  
+
+  .site-footer .footer-identity {
+    order: 2 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    gap: 12px !important;
+    padding: 18px 0 24px !important;
+    margin: 0 !important;
+    border-top: 1px solid #cfd2d5 !important;
+    text-align: center !important;
+  }
+
+  .site-footer .footer-left {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .site-footer .footer-logo {
+    width: 132px !important;
+    max-width: 132px !important;
+    height: auto !important;
+    margin: 0 auto 8px !important;
+  }
+
+  .site-footer .footer-details {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 560px !important;
+    gap: 3px !important;
+    text-align: center !important;
+  }
+
+  .site-footer .footer-details p {
+    margin: 0 !important;
+    font-size: 12px !important;
+  }
+
+  .site-footer .contact-form-wrap {
+    position: relative !important;
+    inset: auto !important;
+    order: 3 !important;
+    width: 100% !important;
+    max-width: 560px !important;
+    height: auto !important;
+    margin: 4px auto 0 !important;
+    padding: 16px 0 0 !important;
+    border-left: 0 !important;
+    border-top: 1px solid #cfd2d5 !important;
+  }
+
+  .site-footer .contact-form-wrap h3 {
+    text-align: center !important;
+    margin: 0 0 10px !important;
+  }
+
+  .site-footer .contact-form {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .site-footer .contact-form input,
+  .site-footer .contact-form textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .site-footer .contact-form button {
+    align-self: center !important;
+    margin: 10px auto 0 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .content-section.journey-section {
+    height: auto !important;
+    min-height: 100svh !important;
+    padding: 78px 0 28px !important;
+    overflow: hidden !important;
+  }
+
+  .journey-section .section-inner {
+    display: block !important;
+    position: relative !important;
+    width: calc(100% - 28px) !important;
+    max-width: 620px !important;
+    height: auto !important;
+    min-height: calc(100svh - 106px) !important;
+    margin: 0 auto !important;
+  }
+
+  /* Decorative visual: absolutely positioned, centered, translucent. */
+  .journey-section .journey-visual,
+  .journey-section .journey-visual-small {
+    position: absolute !important;
+    z-index: 1 !important;
+    inset: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    pointer-events: none !important;
+  }
+
+  .journey-section .journey-visual img,
+  .journey-section .journey-visual-small img,
+  .journey-section .news-illustration {
+    display: block !important;
+    position: relative !important;
+    z-index: 1 !important;
+    width: min(76vw, 300px) !important;
+    max-width: 300px !important;
+    max-height: 32svh !important;
+    height: auto !important;
+    margin: 0 auto !important;
+    transform: none !important;
+    object-fit: contain !important;
+    opacity: .21 !important;
+    filter: none !important;
+  }
+
+  /* SVG road is behind everything and is also translucent. */
+  .journey-section .journey-path {
+    position: absolute !important;
+    z-index: 0 !important;
+    left: 0 !important;
+    top: 0 !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    height: 100% !important;
+    opacity: .21 !important;
+    pointer-events: none !important;
+  }
+
+  .journey-section .journey-path-line {
+    opacity: 1 !important;
+  }
+
+  /* Foreground copy: no inherited grid column, no narrow width. */
+  .journey-section .section-copy {
+    position: relative !important;
+    z-index: 20 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 620px !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 auto !important;
+    padding: 0 8px !important;
+    box-sizing: border-box !important;
+    text-align: center !important;
+  }
+
+  .journey-section .section-copy h2,
+  .journey-section .section-copy .section-text,
+  .journey-section .section-copy .section-text p,
+  .journey-section .section-copy > p {
+    position: relative !important;
+    z-index: 21 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    text-align: center !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    word-break: normal !important;
+    hyphens: auto !important;
+  }
+
+  .journey-section .section-copy h2 {
+    margin: 0 0 14px !important;
+    font-size: clamp(28px, 8vw, 42px) !important;
+    line-height: 1.08 !important;
+  }
+
+  .journey-section .section-copy .section-text p,
+  .journey-section .section-copy > p {
+    margin: 0 0 11px !important;
+    font-size: 15px !important;
+    line-height: 1.48 !important;
+  }
+
+  /* About pillars are normal-flow blocks, never floating/overlapping. */
+  
+
+  
+
+  
+
+  
+
+  /* Audience: one bubble per row. */
+  
+
+  
+
+  
+
+  /* News: it starts after the content above it, never underneath it. */
+  .news-section {
+    position: relative !important;
+    clear: both !important;
+  }
+
+  .news-section .section-inner {
+    min-height: calc(100svh - 106px) !important;
+  }
+
+  .news-section .news-placeholder {
+    position: relative !important;
+    z-index: 25 !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    height: clamp(230px, 38svh, 320px) !important;
+    min-height: 230px !important;
+    max-height: 320px !important;
+    margin: 16px auto 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* CONTACT: exact existing class is .footer-contact-form. */
+  .site-footer {
+    height: auto !important;
+    min-height: 100svh !important;
+    overflow: visible !important;
+  }
+
+  .site-footer .footer-main {
+    display: flex !important;
+    flex-direction: column !important;
+    width: calc(100% - 28px) !important;
+    max-width: 620px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 auto !important;
+  }
+
+  
+
+  .site-footer .footer-identity {
+    order: 2 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    gap: 14px !important;
+    margin: 0 !important;
+    padding: 18px 0 24px !important;
+    box-sizing: border-box !important;
+    border-top: 1px solid #cfd2d5 !important;
+  }
+
+  .site-footer .footer-left {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    margin: 0 !important;
+  }
+
+  .site-footer .footer-logo {
+    width: 132px !important;
+    max-width: 132px !important;
+    height: auto !important;
+    margin: 0 auto 8px !important;
+  }
+
+  .site-footer .footer-details {
+    width: 100% !important;
+    max-width: 560px !important;
+    text-align: center !important;
+  }
+
+  .site-footer .footer-details p {
+    margin: 3px 0 !important;
+  }
+
+  
+
+  
+
+  
+
+  
+}
+
+@media (min-width: 768px) and (max-width: 1023px) and (orientation: portrait) {
+  
+
+  .hero-content,
+  .hero-copy {
+    max-width: 760px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+  }
+
+  
+
+  
+
+  
+
+  .site-footer .footer-identity {
+    grid-template-columns: 1fr !important;
+    justify-items: center !important;
+    row-gap: 24px !important;
+  }
+
+  .site-footer .footer-logo,
+  .site-footer .footer-details,
+  .site-footer .contact-form-wrap {
+    width: min(100%, 620px) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) and (orientation: portrait) {
+
+  .content-section.journey-section {
+    height: auto !important;
+    min-height: 100svh !important;
+    overflow: hidden !important;
+    padding: 82px 0 32px !important;
+  }
+
+  .journey-section .section-inner {
+    position: relative !important;
+    display: block !important;
+    width: min(calc(100% - 44px), 720px) !important;
+    max-width: 720px !important;
+    height: auto !important;
+    min-height: calc(100svh - 114px) !important;
+    margin: 0 auto !important;
+  }
+
+  .journey-section .journey-visual,
+  .journey-section .journey-visual-small {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    pointer-events: none !important;
+  }
+
+  .journey-section .journey-visual img,
+  .journey-section .journey-visual-small img,
+  .journey-section .news-illustration {
+    position: relative !important;
+    z-index: 1 !important;
+    width: min(62vw, 390px) !important;
+    max-width: 390px !important;
+    max-height: 34svh !important;
+    height: auto !important;
+    margin: 0 auto !important;
+    transform: none !important;
+    object-fit: contain !important;
+    opacity: .21 !important;
+    pointer-events: none !important;
+  }
+
+  .journey-section .journey-path {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    opacity: .21 !important;
+    pointer-events: none !important;
+  }
+
+  .journey-section .section-copy {
+    position: relative !important;
+    z-index: 20 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 720px !important;
+    min-width: 0 !important;
+    height: auto !important;
+    margin: 0 auto !important;
+    padding: 0 12px !important;
+    box-sizing: border-box !important;
+    text-align: center !important;
+  }
+
+  .journey-section .section-copy h2,
+  .journey-section .section-copy .section-text,
+  .journey-section .section-copy .section-text p,
+  .journey-section .section-copy > p {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    text-align: center !important;
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+  }
+
+  
+
+  
+
+  .news-section {
+    clear: both !important;
+    position: relative !important;
+  }
+
+  .news-section .news-placeholder {
+    position: relative !important;
+    z-index: 25 !important;
+    width: 100% !important;
+    max-width: none !important;
+    height: clamp(300px, 38svh, 410px) !important;
+    margin: 18px auto 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Contact portrait = mobile-like vertical stack. */
+  .site-footer {
+    height: auto !important;
+    min-height: 100svh !important;
+    overflow: visible !important;
+  }
+
+  .site-footer .footer-main {
+    display: flex !important;
+    flex-direction: column !important;
+    width: min(calc(100% - 44px), 720px) !important;
+    max-width: 720px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 auto !important;
+  }
+
+  
+
+  .site-footer .footer-identity {
+    order: 2 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    width: 100% !important;
+    height: auto !important;
+    gap: 14px !important;
+    margin: 0 !important;
+    padding: 20px 0 26px !important;
+    text-align: center !important;
+  }
+
+  .site-footer .footer-left {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .site-footer .footer-logo {
+    width: 132px !important;
+    max-width: 132px !important;
+    height: auto !important;
+    margin: 0 auto 10px !important;
+  }
+
+  .site-footer .footer-details {
+    width: 100% !important;
+    max-width: 620px !important;
+    text-align: center !important;
+  }
+
+  
+}
+
+@media (min-width: 2560px) {
+  .content-section.journey-section {
+    height: 100vh !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .journey-section .section-inner {
+    height: 100% !important;
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  .journey-section .section-copy {
+    z-index: 10 !important;
+  }
+
+  .journey-section .section-copy h2 {
+    font-size: clamp(52px, 3.0vw, 84px) !important;
+    line-height: 1.08 !important;
+  }
+
+  .journey-section .section-copy p,
+  .journey-section .section-copy .section-text {
+    font-size: clamp(22px, 1.15vw, 34px) !important;
+    line-height: 1.48 !important;
+  }
+
+  .journey-section .journey-visual,
+  .journey-section .journey-visual-small {
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .journey-section .journey-visual img,
+  .journey-section .journey-visual-small img,
+  .journey-section .news-illustration {
+    width: 2 * 100px !important;
+    max-width: none !important;
+    max-height: 78vh !important;
+    height: auto !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .journey-section .journey-path {
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
+/* Correct scalable image size using viewport proportion rather than
+   invalid CSS multiplication. */
+@media (min-width: 2560px) {
+  .journey-section .journey-visual img,
+  .journey-section .journey-visual-small img,
+  .journey-section .news-illustration {
+    width: clamp(720px, 31.25vw, 1200px) !important;
+    max-height: 78vh !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  
+
+  .contact-form,
+  form {
+    box-sizing: border-box !important;
+  }
+
+  /* If the contact area uses a grid, force three columns only there. */
+  
+}
+
+@media (min-width: 2560px) {
+  html {
+    font-size: 200% !important;
+  }
+
+  body {
+    min-width: 1920px !important;
+  }
+
+  .hero,
+  section,
+  footer {
+    min-height: 100vh !important;
+  }
+}
+
+@media (max-width: 767px) and (orientation: portrait) {
+  header,
+  .site-header {
+    position: relative !important;
+    z-index: 1000 !important;
+  }
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  .hero {
+    padding-top: 64px !important;
+    overflow: hidden !important;
+  }
+
+  .hero img {
+    transform: translateX(-10vw) !important;
+    max-width: 92vw !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) and (orientation: portrait) {
+  header,
+  .site-header {
+    position: relative !important;
+    z-index: 1000 !important;
+  }
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  .hero {
+    padding-top: 82px !important;
+    overflow: hidden !important;
+  }
+
+  .hero img {
+    transform: translateX(-7vw) !important;
+    max-width: 88vw !important;
+  }
+}
+
+@media (min-width: 1024px), (orientation: landscape) {
+  
+}
+
+#zs-mobile-menu,
+#zs-menu-button,
+#zs-menu-panel {
+  box-sizing: border-box;
+}
+
+#zs-mobile-menu {
+  display: none;
+}
+
+@media screen and (max-width: 1023px) and (orientation: portrait) {
+  #zs-mobile-menu {
+    display: block !important;
+    position: fixed !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    z-index: 2147483647 !important;
+  }
+
+  #zs-menu-button {
+    display: flex !important;
+    position: fixed !important;
+    left: 12px !important;
+    top: 12px !important;
+    width: 48px !important;
+    height: 48px !important;
+    padding: 8px !important;
+    margin: 0 !important;
+    border: 2px solid #111 !important;
+    border-radius: 8px !important;
+    background: #fff !important;
+    box-shadow: 0 3px 12px rgba(0,0,0,.25) !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+    gap: 5px !important;
+    cursor: pointer !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+
+  #zs-menu-button span {
+    display: block !important;
+    width: 27px !important;
+    height: 3px !important;
+    min-height: 3px !important;
+    background: #111 !important;
+    border-radius: 2px !important;
+  }
+
+  #zs-menu-panel {
+    display: none !important;
+    position: fixed !important;
+    left: 12px !important;
+    top: 68px !important;
+    width: min(280px, calc(100vw - 24px)) !important;
+    max-height: calc(100vh - 82px) !important;
+    overflow-y: auto !important;
+    padding: 8px 0 !important;
+    margin: 0 !important;
+    background: #fff !important;
+    border: 1px solid rgba(0,0,0,.15) !important;
+    border-radius: 9px !important;
+    box-shadow: 0 8px 30px rgba(0,0,0,.25) !important;
+    z-index: 2147483646 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  
+
+  #zs-menu-panel a {
+    display: block !important;
+    width: 100% !important;
+    padding: 13px 18px !important;
+    margin: 0 !important;
+    color: #111 !important;
+    background: #fff !important;
+    text-decoration: none !important;
+    font-size: 17px !important;
+    line-height: 1.25 !important;
+    box-sizing: border-box !important;
+  }
+
+  #zs-menu-panel a:hover,
+  #zs-menu-panel a:focus {
+    text-decoration: underline !important;
+  }
+
+  /* Existing desktop navigation is hidden only in portrait. */
+  header nav,
+  .site-header nav {
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  .hero {
+    padding-top: 70px !important;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) and (orientation: portrait) {
+  #zs-menu-button {
+    left: 18px !important;
+    top: 18px !important;
+    width: 54px !important;
+    height: 54px !important;
+  }
+
+  #zs-menu-panel {
+    left: 18px !important;
+    top: 82px !important;
+    width: 290px !important;
+  }
+
+  .hero {
+    padding-top: 88px !important;
+  }
+}
+
+@media screen and (min-width: 1024px), screen and (orientation: landscape) {
+  #zs-mobile-menu {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 1023px) and (orientation: portrait) {
+  #zs-menu-button {
+    left: auto !important;
+    right: 14px !important;
+  }
+
+  #zs-menu-panel {
+    left: auto !important;
+    right: 14px !important;
+  }
+
+  #zs-menu-panel a {
+    text-align: center !important;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) and (orientation: portrait) {
+  #zs-menu-button {
+    left: auto !important;
+    right: 18px !important;
+  }
+
+  #zs-menu-panel {
+    left: auto !important;
+    right: 18px !important;
+  }
+}
+
+@media screen and (max-width: 767px) and (orientation: portrait) {
+  
+
+  
+}
+
+@media screen and (min-width: 2560px) {
+  
+
+  
+}
+
+@media screen and (max-width: 767px) and (orientation: portrait) {
+  
+
+  
+
+  
+}
+
+@media screen and (min-width: 1024px) {
+  .site-footer .footer-identity {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    align-items: center !important;
+    justify-items: center !important;
+    width: 100% !important;
+    gap: 32px !important;
+  }
+
+  .site-footer .footer-left {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .site-footer .footer-details {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    width: 100% !important;
+    text-align: left !important;
+  }
+
+  
+
+  .site-footer .footer-logo {
+    width: 132px !important;
+    max-width: 132px !important;
+    height: auto !important;
+    margin: 0 auto !important;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .site-footer .footer-identity {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    align-items: center !important;
+    justify-items: stretch !important;
+    width: 100% !important;
+    gap: clamp(28px, 4vw, 64px) !important;
+  }
+
+  .site-footer .footer-left {
+    display: contents !important;
+  }
+
+  .site-footer .footer-details {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    width: 100% !important;
+    text-align: left !important;
+    justify-self: stretch !important;
+  }
+
+  .site-footer .footer-logo {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    width: 132px !important;
+    max-width: 132px !important;
+    height: auto !important;
+    margin: 0 !important;
+    justify-self: start !important;
+    align-self: center !important;
+  }
+
+  .site-footer .contact-form-wrap {
+    grid-column: 3 !important;
+    grid-row: 1 !important;
+    width: 100% !important;
+    max-width: 520px !important;
+    margin: 0 !important;
+    justify-self: stretch !important;
+  }
+}
+
+/* Aktuality – functional carousel and detail modal */
+.news-carousel {
+  position: relative;
+  overflow: hidden;
+  padding: 0 !important;
+  background: #eeeeee !important;
+  border: 1px solid #d7d9dc !important;
+}
+.news-track, .news-slide { width: 100%; height: 100%; }
+.news-slide { min-height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
+.news-poster-wrap {
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eeeeee;
+  overflow: hidden;
+}
+.news-poster {
+  display: block;
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.news-title {
+  flex: 0 0 auto;
+  display: block;
+  width: 100%;
+  padding: 14px 54px 16px;
+  box-sizing: border-box;
+  background: #fff;
+  color: #111;
+  font-weight: 800;
+  font-size: clamp(14px, 1.15vw, 19px);
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.news-arrow {
+  position: absolute;
+  z-index: 8;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 64px;
+  border: 0;
+  border-radius: 8px;
+  background: rgba(255,255,255,.88);
+  color: #222;
+  font-size: 42px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 3px 12px rgba(0,0,0,.12);
+}
+.news-arrow:hover:not(:disabled) { background: #fff; transform: translateY(-50%) scale(1.05); }
+.news-arrow:disabled { opacity: .25; cursor: default; }
+.news-arrow-prev { left: 10px; }
+.news-arrow-next { right: 10px; }
+.news-end-slide { align-items: center; justify-content: center; background: #eeeeee; }
+.news-end-message { font-weight: 800; font-size: clamp(18px, 2vw, 28px); letter-spacing: .04em; color: #333; text-align: center; }
+
+.news-modal {
+  position: fixed; inset: 0; z-index: 10000; display: none; align-items: center; justify-content: center; padding: 24px; box-sizing: border-box;
+}
+
+.news-modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.58); }
+.news-modal-dialog {
+  position: relative; z-index: 1; width: min(1000px, 94vw); max-height: 92vh; overflow: auto; background: #fff; border-radius: 12px; box-shadow: 0 18px 60px rgba(0,0,0,.28);
+}
+.news-modal-close { position: absolute; top: 10px; right: 12px; z-index: 3; width: 42px; height: 42px; border: 0; border-radius: 50%; background: rgba(255,255,255,.92); font-size: 30px; line-height: 1; cursor: pointer; }
+.news-modal-content { display: grid; grid-template-columns: minmax(280px, 46%) minmax(0, 1fr); gap: 30px; padding: 30px; }
+
+.news-modal-copy { padding: 8px 8px 12px 0; color: #222; line-height: 1.55; }
+.news-modal-copy h2 { margin: 0 0 6px; color: #111; font-size: clamp(26px, 3vw, 40px); line-height: 1.08; }
+.news-modal-copy > p:first-of-type { margin-top: 0; }
+
+.news-modal-copy a { color: inherit; font-weight: 700; }
+@media (max-width: 767px) {
+  .news-title { padding-left: 46px; padding-right: 46px; }
+  .news-arrow { width: 38px; height: 54px; font-size: 34px; }
+  .news-modal { padding: 12px; }
+  .news-modal-content { grid-template-columns: 1fr; gap: 20px; padding: 20px; }
+  
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .news-modal-content { grid-template-columns: minmax(250px, 42%) minmax(0, 1fr); }
+}
+
+.news-modal-copy,
+.news-modal-copy p,
+.news-modal-copy td,
+.news-modal-copy th {
+  hyphens: none !important;
+  -webkit-hyphens: none !important;
+  -ms-hyphens: none !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  white-space: normal !important;
+}
+
+.news-modal-copy a[href^="tel:"] {
+  white-space: nowrap;
+}
+
+.news-slide[hidden] { display: none !important; }
+
+.news-modal,
+.news-modal * {
+  hyphens: none !important;
+  -webkit-hyphens: none !important;
+  -ms-hyphens: none !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+}
+.news-modal h1,
+.news-modal h2,
+.news-modal h3,
+.news-modal p,
+.news-modal td,
+.news-modal th,
+.news-modal li {
+  hyphens: none !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+}
+.news-modal-content {
+  transition: transform .28s ease, opacity .28s ease;
+}
+
+@keyframes newsSlideInRight {
+  from { opacity: 0; transform: translateX(42px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes newsSlideInLeft {
+  from { opacity: 0; transform: translateX(-42px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@media screen and (min-width: 1024px) {
+  .site-header .main-nav {
+    display: flex !important;
+    align-items: center !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    flex-wrap: nowrap !important;
+  }
+
+  
+
+  
+
+  
+}
+
+@media (max-width: 800px) {
+  
+}
+
+@media(max-width:800px){
+  
+  
+}
+
+@media screen and (max-width: 1023px) and (orientation: portrait) {
+  /* Mobile: use the original hero artwork without any extra scaling or
+     translation. Mirror it left-to-right and anchor the mirrored artwork
+     to the left edge of the viewport. With the mirrored element,
+     background-position:right keeps the visible left edge pinned left. */
+  .hero .hero-image {
+    transform: scaleX(-1) !important;
+    background-position: calc(100% + 280px) center !important;
+  
+    opacity: 0.75 !important;
+  }
+/* The popup must always sit above the functional mobile menu. */
+  .news-modal{
+    z-index: 2147483647 !important;
+  }
+
+  /* While any popup is open, the mobile menu is completely unavailable.
+     It becomes visible again automatically after the popup closes. */
+  
+}
+
+/* Cookie consent banner */
+
+@media(max-width:700px){
+  
+  
+  
+  
+}
+
+@media screen and (max-width:1023px) and (orientation:portrait) {
+  .hero .hero-overlay {
+    background: transparent !important;
+    opacity: 0 !important;
+  }
+  .hero .hero-image {
+    opacity: 0.75 !important;
+  }
+}
+
+/* Requested: words always wrap as whole words; no automatic hyphenation. */
+body, body * {
+  hyphens: none !important;
+  -webkit-hyphens: none !important;
+  -ms-hyphens: none !important;
+}
+
+/* Requested: prevent the O nás content/pillars from being clipped at viewport edge. */
+#o-nas {
+  min-height: 100vh;
+  height: auto;
+  max-height: none;
+  overflow: visible;
+}
+
+/* Requested: contact section fills one viewport height. */
+.site-footer {
+  min-height: 100vh;
+  height: 100vh;
+}
+@media screen and (max-width: 1023px) {
+  .site-footer {
+    min-height: 100vh;
+    height: auto;
+  }
+}
+
+/* Instagram: same visual format as Facebook */
+.facebook-button,
+.instagram-button {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  flex: 0 0 auto;
+  border-radius: 6px;
+  transition: transform 0.2s ease;
+}
+
+.facebook-button img,
+.instagram-button img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: filter 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+}
+
+.instagram-button img {
+  opacity: 0.84;
+}
+
+.facebook-button:hover img,
+.facebook-button:focus-visible img,
+.instagram-button:hover img,
+.instagram-button:focus-visible img {
+  filter: invert(42%) sepia(78%) saturate(1000%) hue-rotate(194deg) brightness(90%) contrast(95%);
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+.instagram-button:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+/* Mobile footer: keep the designer credit visible on its own line. */
+@media screen and (max-width: 767px) {
+  .footer-bottom .container {
+    grid-template-columns: 1fr auto auto;
+    grid-template-rows: auto auto;
+    align-items: center;
+    gap: 8px 14px;
+  }
+
+  .footer-bottom .container > span:first-child {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+    min-width: 0;
+    white-space: normal;
+  }
+
+  .footer-bottom .container > .facebook-button {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .footer-bottom .container > .instagram-button {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .footer-bottom .container > span:last-child {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-self: center;
+    min-width: 0;
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: normal;
+    text-align: center;
+  }
+}
+
+/* Desktop: restore centered social icons; mobile layout remains unchanged. */
+@media screen and (min-width: 1024px) {
+  .footer-bottom .container {
+    grid-template-columns: 1fr auto 1fr !important;
+    align-items: center !important;
+  }
+  .footer-bottom .container > .facebook-button,
+  .footer-bottom .container > .instagram-button {
+    justify-self: center !important;
+  }
+}
+
+/* Social links in the former sponsor area; footer bottom contains only copyright and designer credit. */
+.site-footer .footer-socials {
+  grid-column: 1;
+  grid-row: 1;
+  width: min(100%, 520px);
+  margin: 0 auto;
+  align-self: center;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  justify-items: center;
+  gap: 36px;
+}
+
+.site-footer .footer-socials .facebook-button,
+.site-footer .footer-socials .instagram-button {
+  width: 66px;
+  height: 66px;
+  margin-left: 0;
+}
+
+.site-footer .footer-bottom .container {
+  grid-template-columns: 1fr 1fr !important;
+}
+
+.site-footer .footer-bottom .container > span:first-child {
+  grid-column: 1 !important;
+  justify-self: start !important;
+}
+
+.site-footer .footer-bottom .container > span:last-child {
+  grid-column: 2 !important;
+  justify-self: end !important;
+}
+
+@media screen and (max-width: 767px) {
+  .site-footer .footer-socials {
+    width: min(100%, 360px);
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding: 20px 0;
+  }
+
+  .site-footer .footer-socials .facebook-button,
+  .site-footer .footer-socials .instagram-button {
+    width: 63px;
+    height: 63px;
+  }
+
+  .site-footer .footer-bottom .container {
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-rows: 1fr !important;
+    gap: 8px 14px !important;
+  }
+
+  .site-footer .footer-bottom .container > span:first-child {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    justify-self: start !important;
+    text-align: left !important;
+  }
+
+  .site-footer .footer-bottom .container > span:last-child {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    justify-self: end !important;
+    text-align: right !important;
+    white-space: normal;
+  }
+}
+
+/* FINAL MOBILE SCROLL FIX – restored from the previously working version */
+@media screen and (max-width: 1023px) and (orientation: portrait) {
+  html {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    height: auto !important;
+    min-height: 100% !important;
+    touch-action: pan-y pinch-zoom !important;
+    overscroll-behavior-y: auto !important;
+  }
+
+  body{
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+    height: auto !important;
+    min-height: 100% !important;
+    touch-action: pan-y pinch-zoom !important;
+    overscroll-behavior-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .hero,
+  .journey-section,
+  .content-section.journey-section,
+  .site-footer {
+    overflow: clip !important;
+    touch-action: pan-y pinch-zoom !important;
+  }
+
+  .hero-image, .hero-overlay, .hero::before, .hero::after, .journey-path, .journey-section::before, .journey-section::after, .site-footer::before, .site-footer::after{
+    pointer-events: none !important;
+  }
+
+  .site-header{
+    position: relative !important;
+  }
+}
+
+@media (max-width: 767px) {
+  
+  
+  
+}
+
+/* Aktualita Rokycany: fotografie je vertikálně vycentrovaná v okně */
+.news-gallery-modal-content {
+  align-items: center;
+}
+
+/* Final mobile popup positioning: center dialogs in the visible viewport and prevent sideways page movement behind them. */
+.news-modal {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  max-width: 100vw !important;
+  margin: 0 !important;
+  padding: 12px !important;
+  box-sizing: border-box !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain !important;
+  touch-action: pan-y pinch-zoom !important;
+}
+.news-modal-dialog {
+  flex: 0 0 auto !important;
+  margin: auto !important;
+  max-width: 100% !important;
+  max-height: calc(100vh - 24px) !important;
+  max-height: calc(100dvh - 24px) !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain !important;
+  touch-action: pan-y pinch-zoom !important;
+}
+.news-modal-backdrop {
+  position: fixed !important;
+  inset: 0 !important;
+  touch-action: pan-y pinch-zoom !important;
+}
+
+@media (max-width: 767px) {
+  .news-modal-dialog {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .news-modal-content {
+    min-width: 0 !important;
+  }
+}
+
+/* Final fix: when a news popup is open, freeze the background page in both axes. */
+
+.news-modal {
+  overscroll-behavior: contain !important;
+  overflow-x: hidden !important;
+}
+.news-modal-dialog, .news-modal-content, .news-modal-copy{
+  min-width: 0 !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
+@media (min-width: 768px) {
+  .news-gallery-modal-content {
+    align-items: center !important;
+  }
+  
+  
+}
+@media (max-width: 767px) {
+  
+  
+}
+
+/* ZS Elektro – final brand refinements */
+:root {
+  --zs-orange: #ED4801;
+  --zs-gray: #EDEDED;
+  --zs-charcoal: #292929;
+}
+.hero-image {
+  background-image: url("images/uvodni-fotografie-dodavka.png");
+  background-position: center center;
+}
+.hero h1, .hero-text {
+  color: var(--zs-orange);
+  -webkit-text-stroke: 0;
+  text-shadow: none;
+}
+.button-primary {
+  background: var(--zs-orange);
+  color: #111;
+  border: 1px solid #111;
+}
+
+.about-section, .activities-section, .news-section {
+  --path-color: var(--zs-orange);
+}
+.journey-path-line {
+  stroke: var(--zs-orange);
+  
+}
+.zs-section {
+  background-color: var(--zs-gray);
+}
+.zs-section .journey-visual img {
+  object-fit: contain;
+  filter: none;
+}
+.about-section .journey-visual img { max-width: 100%; }
+.activities-section .journey-visual img { max-width: 390px; }
+.news-section .news-illustration {
+  width: min(100%, 300px);
+  max-width: 300px;
+  opacity: 1;
+}
+.zs-section .section-copy h2,
+.zs-section .feature-item h3 { color: var(--zs-charcoal); }
+.zs-section .feature-item {
+  border-left: 3px solid var(--zs-orange);
+  padding-left: 18px;
+}
+.zs-callout {
+  margin-top: 22px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+.site-footer .contact-form button {
+  background: var(--zs-orange);
+  color: #111;
+  border: 1px solid #111;
+}
+.site-footer .footer-logo {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  filter: grayscale(1);
+}
+.site-footer a:hover { color: var(--zs-orange); }
+.news-section .news-poster { object-fit: cover; }
+
+/* ZS Elektro – doladění verze 3 */
+:root {
+  --zs-gray: #ededed;
+}
+/* Zachovat původní rozměr a poměr loga v navigaci. */
+.site-header .brand img {
+  display: block;
+  width: 148px;
+  height: auto;
+  max-height: 64px;
+  object-fit: contain;
+}
+/* Úvodní fotografie posunutá o 100 px doprava; ostatní nastavení úvodu beze změny. */
+.hero-image {
+  background-position: calc(50% + 100px) center;
+}
+.hero-overlay {
+  background: linear-gradient(
+    90deg,
+    rgba(237, 237, 237, 0.98) 0%,
+    rgba(237, 237, 237, 0.92) 31%,
+    rgba(237, 237, 237, 0.34) 57%,
+    rgba(237, 237, 237, 0.04) 100%
+  );
+}
+/* Jednotná nová šedá pro všechny obsahové sekce včetně Naší práce. */
+.zs-section,
+.content-section.zs-section,
+.news-section.zs-section {
+  background-color: #ededed !important;
+}
+/* Ilustrace domu bez původního rámečku. */
+.about-section .journey-visual img {
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+/* Původní vnitřní odsazení textu v referenčním popupu (první verze). */
+.news-modal-copy {
+  padding: 24px !important;
+}
+@media (max-width: 700px) {
+  .site-header .brand img {
+    width: 62px;
+    height: 56px;
+    max-height: 56px;
+    object-fit: contain;
+  }
+  .hero-image {
+    background-position: calc(50% + 40px) center;
+  }
+}
+
+/* ZS Elektro – finální doladění reference a kontaktního formuláře */
+.news-modal-dialog {
+  width: min(1000px, 94vw);
+  max-height: 92vh;
+  background: #fff;
+  border-radius: 12px;
+}
+.news-modal-content.news-gallery-modal-content {
+  display: grid;
+  grid-template-columns: minmax(280px, 46%) minmax(0, 1fr);
+  align-items: center;
+  gap: 30px;
+  padding: 30px;
+}
+.news-modal-copy {
+  padding: 8px 8px 12px 0 !important;
+  color: #222;
+  line-height: 1.55;
+}
+.news-modal-copy h2 {
+  margin: 0 0 12px;
+  color: #111;
+  font-size: clamp(26px, 3vw, 40px);
+  line-height: 1.08;
+}
+.zs-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  align-content: center;
+  min-width: 0;
+}
+.zs-photo-grid img {
+  display: block;
+  width: 100%;
+  height: clamp(125px, 19vh, 190px);
+  object-fit: cover;
+  border-radius: 5px;
+}
+.zs-photo-grid img:first-child {
+  grid-column: 1 / -1;
+  height: clamp(165px, 25vh, 245px);
+}
+.news-end-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  background: #ededed;
+}
+.news-end-message {
+  padding: 28px;
+  color: #292929;
+  font-size: clamp(20px, 2vw, 30px);
+  font-weight: 800;
+  letter-spacing: .035em;
+  text-align: center;
+}
+@media (max-width: 767px) {
+  .news-modal-content.news-gallery-modal-content {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 20px;
+  }
+  .zs-photo-grid img {
+    height: 130px;
+  }
+  .zs-photo-grid img:first-child {
+    height: 175px;
+  }
+  .news-modal-copy {
+    padding: 0 !important;
+  }
+}
+
+/* ZS Elektro – finální mobilní nastavení úvodní sekce */
+@media screen and (max-width: 767px) {
+  .hero h1,
+  .hero .hero-text {
+    color: #000000 !important;
+  }
+
+  .hero .hero-image {
+    opacity: 0.85 !important;
+  }
+}
+
+
+/* Mobilní úpravy: úvodní text pod navigací a čtyři pilíře pod sebou. */
+@media (max-width: 767px) {
+  /* Keep the hero copy near the top, below the fixed mobile menu. */
+  .hero {
+    align-items: flex-start !important;
+  }
+  .hero-content {
+    align-self: flex-start !important;
+    padding-top: 82px !important;
+    padding-bottom: 40px !important;
+  }
+  .feature-list {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 14px !important;
+    width: 100% !important;
+  }
+  .feature-item {
+    width: 100% !important;
+    min-height: 0 !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* Samostatný celoobrazovkový náhled fotografií v referenci. */
+.zs-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 20000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 56px 64px;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, .94);
+}
+.zs-lightbox.is-open { display: flex; }
+.zs-lightbox-image {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.zs-lightbox-close,
+.zs-lightbox-arrow {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255,255,255,.55);
+  color: #fff;
+  background: rgba(30,30,30,.72);
+  cursor: pointer;
+}
+.zs-lightbox-close {
+  top: 14px;
+  right: 16px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  font-size: 30px;
+}
+.zs-lightbox-arrow {
+  top: 50%;
+  width: 46px;
+  height: 58px;
+  border-radius: 8px;
+  transform: translateY(-50%);
+  font-size: 34px;
+}
+.zs-lightbox-prev { left: 12px; }
+.zs-lightbox-next { right: 12px; }
+.zs-lightbox-count {
+  position: absolute;
+  bottom: 16px;
+  left: 0;
+  right: 0;
+  color: #fff;
+  text-align: center;
+  font: 600 14px/1.4 sans-serif;
+}
+.zs-photo-grid img { cursor: zoom-in; }
+@media (max-width: 767px) {
+  .zs-lightbox { padding: 54px 8px; }
+  .zs-lightbox-arrow { width: 38px; height: 48px; }
+  .zs-lightbox-prev { left: 5px; }
+  .zs-lightbox-next { right: 5px; }
+}
+
+/* The carousel detail popup must become visible when its open state is set by JS. */
+.news-modal.is-open {
+  display: flex !important;
+}
+
+/* Poslední doladění: desktopová navigace zůstává při scrollování nahoře. */
+@media (min-width: 768px) {
+  .site-header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 10000 !important;
+  }
+}
+
+/* Mobil: text začíná 10 px od horní hrany úvodní fotografie. */
+@media (max-width: 767px) and (orientation: portrait) {
+  .hero {
+    padding-top: 0 !important;
+    align-items: flex-start !important;
+  }
+  .hero-content {
+    padding-top: 10px !important;
+    padding-bottom: 40px !important;
+    align-self: flex-start !important;
+  }
+}
+
+/* Desktop: při zahájení scrollování se navigace změní na bílou a zůstane nahoře. */
+@media (min-width: 768px) {
+  .site-header.is-scrolled {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border-bottom-color: rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06) !important;
+  }
+
+  .site-header.is-scrolled .main-nav a {
+    color: #000000 !important;
+  }
+}
+
+/* Oprava mobilního menu: panel se musí zobrazit po otevření tlačítkem. */
+@media screen and (max-width: 1023px) and (orientation: portrait) {
+  #zs-menu-panel.is-open {
+    display: block !important;
+  }
+}
+
+/* Zvětšená fotografie musí být nad popupem projektu, ne pod ním. */
+.zs-lightbox {
+  z-index: 2147483647 !important;
+}
+
+
+/* Úpravy dle zadání 15. 11. 2026 – pouze úvodní text a poslední reference */
+@media (max-width: 767px) {
+  .hero-text .keep-word {
+    white-space: nowrap;
+  }
+}
+.news-title.news-open-new {
+  font-size: clamp(14px, 1.15vw, 19px);
+}
+.news-modal-copy #news-modal-new-title {
+  font-size: clamp(24px, calc(3vw - 2px), 38px);
+}
